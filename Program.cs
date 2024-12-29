@@ -29,10 +29,10 @@ namespace Ancient_Coin_Generater
 
             builder.Services.AddRadzenComponents();
 
-            builder.Services.AddHttpClient("DALL·E", client =>
+            builder.Services.AddHttpClient("DALLÂ·E", client =>
             {
                 client.BaseAddress = new Uri("https://api.openai.com");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "sk-proj-FrFjF4JW0pI56CaWwcJOT3BlbkFJnF2Ty3xDAlnbpBTpTWwE");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "YOUR_API_KEY_HERE");
             });
 
             builder.Services.AddScoped<ImageService>(sp =>
@@ -40,7 +40,7 @@ namespace Ancient_Coin_Generater
                 var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
                 
               
-                var httpClient = httpClientFactory.CreateClient("DALL·E");
+                var httpClient = httpClientFactory.CreateClient("DALLÂ·E");
                 return new ImageService(httpClient);
             });
 
