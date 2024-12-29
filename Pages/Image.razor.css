@@ -1,0 +1,56 @@
+﻿.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align children vertically in the center */
+    align-items: center; /* Align children horizontally in the center */
+    height: 100vh; /* Full viewport height */
+    position: relative;
+    padding-bottom: 50px; /* Give some space for the regenerate button */
+}
+
+img {
+    max-width: 80%; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Space between the image and the button */
+}
+
+.return-button, .regenerate-button {
+    border: none;
+    background-color: #f2f2f2; /* Light grey background */
+    border-radius: 15px; /* Smooth edges */
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    margin: 0 auto; /* Center the buttons horizontally */
+}
+
+.return-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.regenerate-button {
+    position: absolute;
+    bottom: 50px; /* Move the button up by increasing the bottom value */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Add styles for the waiting text */
+.waiting-text {
+    text-align: center;
+    margin-top: 20px; /* Adjust as needed to place below the button */
+}
+
+.save-button {
+    position: absolute;
+    top: 5px; /* Align with the return button */
+    right: 10px; /* Place on the right side */
+    border: none; /* No border for an edgeless look */
+    padding: 10px 20px; /* Same padding as the return button */
+    background-color: #f2f2f2; /* Background color */
+    cursor: pointer; /* Cursor as a pointer */
+    border-radius: 15px;
+    outline: none;
+}

@@ -1,0 +1,40 @@
+﻿@page "/image-gallery"
+
+@using Ancient_Coin_Generater.Models_for_DTO
+@using Ancient_Coin_Generater.Data
+@using Microsoft.AspNetCore.Identity
+@inject NavigationManager NavigationManager
+@inject ImageService ImageService
+@inject dbService DbService
+
+<h3 class="title">Your Generated Images</h3>
+
+<div class="image-container">
+    <button class="return-button" @onclick="NavigateToDisplay">Return to Main</button>
+
+    @if (allImages != null && allImages.Count > 0)
+    {
+        foreach (var image in allImages)
+        {
+            <img src="@($"data:image/png;base64,{Convert.ToBase64String(image.ImageData)}")" alt="Generated Image" />
+        }
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+</div>
+
+@code {
+    private List<ImageRecord> allImages = new List<ImageRecord>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        allImages = await DbService.GetAllImages();
+    }
+
+    private void NavigateToDisplay()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

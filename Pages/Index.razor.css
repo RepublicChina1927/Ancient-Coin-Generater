@@ -1,0 +1,128 @@
+﻿
+
+.coin-generator-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+}
+
+.coin-shape {
+    position: relative;
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    background-color: goldenrod; /* Gold color for the coin */
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coin-text {
+    position: absolute;
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Increase font size for A, B, C, D */
+    font-weight: bold; /* Optional: Makes the letters thicker */
+}
+
+.top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bottom {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.coin-center {
+    position: absolute;
+    width: 35px; /* Adjust the size as needed */
+    height: 35px; /* Adjust the size as needed */
+    background-color: #fff; /* White color for the center square */
+    border-radius: 5px; /* Slightly rounded corners for the square */
+}
+
+
+.input-section {
+    background-color: #ddd; /* Gray background */
+    border-radius: 15px; /* Smooth edges */
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    display: flex;
+    padding: 10px;
+
+}
+
+    .input-section label {
+        flex-grow: 1;
+        text-align: left;
+        margin-right: 5px; /* Reduce space between label and options */
+        font-size: 22px;
+    }
+
+.icon-temperature, .icon-color-of-rust, .icon-staining-condition {
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    margin-right: 10px;
+    /* Add background images for icons here */
+}
+
+.input-options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .input-options .option {
+        width: 50px; /* Adjust as needed */
+        height: 50px; /* Adjust as needed */
+        background-color: #f0f0f0; /* Lighter gray for options */
+        margin: 5px;
+        /* Add more styles for options if needed */
+        margin: 10px; /* Reduce margin to bring options closer */
+        text-align: center;
+    }
+
+.submit-button {
+    width: 150px; /* Set a fixed width */
+    margin: 20px auto; /* Vertical margins and horizontal auto margins for centering */
+    padding: 10px 20px; /* Optional: Adjust padding as needed */
+    /* Add any additional styles for the button here */
+    border-radius: 15px; /* Smooth edges */
+    margin-bottom: 10px;
+}
+
+/* Add a fixed height container for the waiting text */
+.waiting-container {
+    height: 30px; /* Adjust the height as needed */
+    text-align: center;
+    margin-top: 10px; /* Adjust as needed to place below the submit button */
+}
+
+/* Style for the waiting text on the index.razor page */
+.waiting-text-index {
+    /* No need for margin-top here anymore */
+}

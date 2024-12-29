@@ -1,0 +1,77 @@
+﻿@page "/display"
+
+<PageTitle>Ancient Coin Generator</PageTitle>
+
+@inject NavigationManager NavigationManager
+
+@using Ancient_Coin_Generater.Models_for_DTO
+
+@using Microsoft.AspNetCore.WebUtilities
+
+@inject ImageService ImageService
+@inject dbService DbService
+
+@inject NavigationManager NavigationManager
+
+
+
+<div class="page-container">
+
+    <button class="return-button" @onclick="NavigateToDisplay">Return</button>
+
+    <!-- Display the image -->
+    <img src="@imageUrl" alt="Generated Ancient Coin" />
+
+    <button class="regenerate-button" @onclick="RegenerateImage">Regenerate</button>
+    @if (isLoading)
+    {
+        <p class="waiting-text-index">Waiting...</p>
+    }
+
+    <a href="/image-gallery">View Image Gallery</a>
+
+    <button class="save-button" @onclick="SaveImage">Save</button>
+
+</div>
+
+
+
+
+@code
+{
+    private string imageUrl;
+
+    protected override void OnInitialized()
+    {
+        var uri = NavigationManager.ToAbsoluteUri(NavigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("image", out var image))
+        {
+            imageUrl = image;
+        }
+    }
+
+    private void NavigateToDisplay()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    private bool isLoading = false;
+
+    private async Task RegenerateImage()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        imageUrl = await ImageService.RegenerateImage();
+
+        isLoading = false;
+        StateHasChanged();
+    }
+
+    private async Task SaveImage()
+    {
+        var imageBytes = await ImageService.GetImageBytesFromUrl(imageUrl);
+        await DbService.SaveImageFromUrl(imageBytes);
+    }
+
+}

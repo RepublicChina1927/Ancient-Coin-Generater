@@ -1,0 +1,121 @@
+﻿@page "/"
+@using Ancient_Coin_Generater.Data
+@using Ancient_Coin_Generater.Models_for_DTO
+
+<PageTitle>Ancient Coin Generator</PageTitle>
+
+@inject NavigationManager NavigationManager
+
+@inject ImageService ImageService
+
+@using Microsoft.AspNetCore.Identity;
+
+
+
+
+
+
+
+
+<div class="coin-generator-container">
+    <div class="coin-shape">
+        <div class="coin-text top">A</div>
+        <div class="coin-text left">B</div>
+        <div class="coin-text right">C</div>
+        <div class="coin-text bottom">D</div>
+        <div class="coin-center"></div>
+
+    </div>
+    <h1>Ancient Coin Generator</h1>
+
+
+    <div class="input-section temperature">
+        <label>Temperature</label>
+        <div class="input-options">
+            <input type="radio" id="cold" name="temperature" value="Cold" @onclick="@(() => SelectOption("temperature", "Cold"))">
+            <label for="cold">Cold</label>
+
+            <input type="radio" id="hot" name="temperature" value="Hot" @onclick="@(() => SelectOption("temperature", "Hot"))">
+            <label for="hot">Hot</label>
+
+            <input type="radio" id="moderate" name="temperature" value="Moderate" @onclick="@(() => SelectOption("temperature", "Moderate"))">
+            <label for="moderate">Moderate</label>
+        </div>
+    </div>
+
+    <div class="input-section color-of-rust">
+        <label>Color of Rust</label>
+        <div class="input-options">
+            <input type="radio" id="green" name="color-of-rust" value="Green" @onclick="@(() => SelectOption("color of rust", "Green"))">
+            <label for="green">Green</label>
+
+            <input type="radio" id="red" name="color-of-rust" value="Red" @onclick="@(() => SelectOption("color of rust", "Red"))">
+            <label for="red">Red</label>
+
+            <input type="radio" id="blue" name="color-of-rust" value="Blue" @onclick="@(() => SelectOption("color of rust", "Blue"))">
+            <label for="blue">Blue</label>
+        </div>
+    </div>
+
+    <div class="input-section storing-condition">
+        <label>Storing Condition</label>
+        <div class="input-options">
+            <input type="radio" id="handed" name="storing-condition" value="Handed" @onclick="@(() => SelectOption("storing condition", "Handed"))">
+            <label for="Handed">Handed</label>
+
+            <input type="radio" id="buried" name="storing-condition" value="Buried" @onclick="@(() => SelectOption("storing condition", "Buried"))">
+            <label for="Buried">Buried</label>
+
+            <input type="radio" id="new" name="storing-condition" value="New" @onclick="@(() => SelectOption("storing condition", "New"))">
+            <label for="New">New</label>
+        </div>
+    </div>
+    
+    
+
+    <button class="submit-button" @onclick="GenerateImage">Submit</button>
+   
+
+    <div class="waiting-container">
+        @if (isLoading)
+        {
+            <p class="waiting-text-index">Waiting...</p>
+        }
+    </div>
+</div>
+
+@code {
+    private string temperatureSelection = "";
+    private string colorOfRustSelection = "";
+    private string storingConditionSelection = "";
+    private ImageResponseDTO imageResponse; // To store the response from the service
+
+    private void SelectOption(string category, string selection)
+    {
+        // Your existing switch statement
+    }
+
+    private bool isLoading = false;
+
+    private async Task GenerateImage()
+    {
+        isLoading = true;
+        StateHasChanged();
+        // Update the ImageService properties with the current selections
+        ImageService.TemperatureSelection = temperatureSelection;
+        ImageService.ColorOfRustSelection = colorOfRustSelection;
+        ImageService.StoringConditionSelection = storingConditionSelection;
+
+        // Call the ImageService to generate the image
+        var imageUrl = await ImageService.RegenerateImage();
+
+        // Navigate to the display page with the image URL
+        NavigationManager.NavigateTo($"/display?image={Uri.EscapeDataString(imageUrl)}");
+
+        isLoading = false;
+        StateHasChanged();
+    }
+
+}
+
+
