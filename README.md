@@ -31,45 +31,20 @@ Welcome to the **Ancient Coin Generator** project! This tool allows users to cre
 
 ---
 
+## Disclaimer About API Key
+
+This project requires an API key from OpenAI to function. However, the API key has been removed from the code for security reasons. To run the project:
+
+1. Obtain your own OpenAI API key by signing up at [OpenAI](https://openai.com).
+2. Replace `"YOUR_API_KEY_HERE"` in the code with your own API key.
+
+---
+
 ## Requirements
 
 - A working internet connection
 - API access to OpenAI's DALL.E (ensure you have the necessary API keys configured)
 - Modern web browser
-
----
-
-## Installation and Setup
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/ancient-coin-generator.git
-   ```
-
-2. Navigate to the project directory:
-   ```bash
-   cd ancient-coin-generator
-   ```
-
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-4. Configure your OpenAI API Key:
-   - Add your OpenAI API key to the `.env` file as:
-     ```
-     OPENAI_API_KEY=your_api_key
-     ```
-
-   > Note: Replace `your_api_key` with your actual OpenAI API key when using the application.
-
-5. Run the application:
-   ```bash
-   npm start
-   ```
-
-6. Open your browser and navigate to `http://localhost:3000`.
 
 ---
 
@@ -112,27 +87,6 @@ Example prompt for the API:
 
 ---
 
-## Contributing
-
-We welcome contributions! If you want to enhance the project, please:
-
-1. Fork the repository.
-2. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add feature name"
-   ```
-4. Push your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Create a Pull Request.
-
----
-
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
@@ -145,4 +99,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - All contributors and users who make this project better!
 
 Enjoy creating your own ancient coins and sharing them with the world!
+
+
 
